@@ -48,7 +48,7 @@ async def start(message):
 
         if not user_doc.exists:
             photos = await bot.get_user_profile_photos(user_id, limit=1)
-            if photos.total_count > 0:
+            if photos and photos.total_count > 0 and photos.photos:
                 file_id = photos[0][-1].file_id
                 file_info = await bot.get_file(file_id)
                 file_path=file_info.file_path
